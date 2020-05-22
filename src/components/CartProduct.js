@@ -1,25 +1,24 @@
 import {Button, List} from "antd";
 import React from "react";
-import {connect} from "react-redux"
-import {removeFromCart} from "../action";
+import _ from "lodash"
 
-
-const CartProduct = ({cartProducts, removeFromCart}) => {
+const CartProduct = ({data, removeFromCart}) => {
+    const arr = _.values(data);
     return (
         <List
             itemLayout="horizontal"
-            dataSource={cartProducts}
+            dataSource={arr}
             renderItem={item => (
                 <List.Item key={item.id}>
                     <List.Item.Meta
             title={item.title}
             description={"Price: " + item.price + " Quality: " + item.quality}
           />
-          <Button type="link" onClick={() => removeFromCart(item.id)}>Remove</Button>
+          <Button type="link" onClick={() => removeFromCart(item)}>Remove</Button>
         </List.Item>
       )}
     />
   );
 };
 
-export default connect(null, removeFromCart)(CartProduct);
+export default CartProduct;

@@ -17,7 +17,6 @@ function* addProductSaga(action) {
 function* getProductSaga() {
     try {
         const products = yield call(reduxSagaFirebase.database.read, 'products')
-        console.log(products)
         if (products) {
             yield put(getListProducts(products))
         } else {

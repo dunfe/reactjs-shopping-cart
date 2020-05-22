@@ -1,11 +1,11 @@
-import {ADD_TO_CART, CHECK_OUT, REMOVE_FROM_CART, SHOW_CART} from "../constants/ActionTypes";
+import {ADD_TO_CART, CHECK_OUT, REMOVE_FROM_CART, GET_CART} from "../constants/ActionTypes";
 
 const cartProducts = (state = [], action) => {
   switch (action.type) {
-    case SHOW_CART:
+    case GET_CART:
       return {
         ...state,
-        show: !action.show
+        cart: action.cart
       }
     case CHECK_OUT:
       return [];
@@ -14,32 +14,13 @@ const cartProducts = (state = [], action) => {
         return product.id !== action.id
       });
     case ADD_TO_CART:
-      if (state.some(product => product["id"] === action.cartProducts.id)) {
-        return state.map(product => {
-          if (product["id"] === action.cartProducts.id) {
-            return {
-              ...product,
-              quality: product.quality + 1,
-              inventory: action.cartProducts.inventory - 1
-            };
-          } else {
-            return product;
-          }
-        });
-      } else {
-        return [
-          ...state,
-          {
-            ...action.cartProducts,
-            quality: 1,
-            inventory: action.cartProducts.inventory - 1
-          }
-        ];
+      return {
+        ...state
       }
     default:
       return state;
   }
 };
-export const getCartProducts = state => state.cartProducts;
+export const getCartProducts = state => state.cartProducts.cart;
 
 export default cartProducts;
