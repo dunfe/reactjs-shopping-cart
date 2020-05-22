@@ -1,3 +1,5 @@
+import {REMOVE_FROM_CART} from "../constants/ActionTypes";
+
 export const types = {
     ADD_TO_CART: {
         REQUEST: 'ADD_TO_CART.REQUEST',
@@ -9,7 +11,16 @@ export const types = {
         SUCCESS: 'CHECK_OUT.SUCCESS',
         FAILURE: 'CHECK_OUT.FAILURE',
     },
+    REMOVE_FROM_CART: {
+        REQUEST: 'CHECK_OUT.REQUEST',
+        SUCCESS: 'CHECK_OUT.SUCCESS',
+        FAILURE: 'CHECK_OUT.FAILURE',
+    }
 }
+export const removeFromCart = product => ({
+    type: REMOVE_FROM_CART,
+    product
+})
 
 export const addToCart = () => ({
     type: types.ADD_TO_CART.REQUEST,

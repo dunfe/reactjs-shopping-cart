@@ -12,7 +12,7 @@ const logoStyle = {
   margin: 16
 };
 
-const UserSider = ({loggedIn, user, login, logout}) => {
+const UserSider = ({loggedIn, user, login, logout, getListProducts}) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
@@ -28,6 +28,7 @@ const UserSider = ({loggedIn, user, login, logout}) => {
         <Menu.Item key="1" icon={<ShopOutlined />}>
           <Link to="/">Shop</Link>
         </Menu.Item>
+        <Menu.Item key="4" onClick={getListProducts}>Load</Menu.Item>
         <SubMenu key="sub1" icon={<UserOutlined />} title={loggedIn ? user.displayName  : 'User'}>
           <Menu.Item key="2">
             <Link to="/add">Add product</Link>

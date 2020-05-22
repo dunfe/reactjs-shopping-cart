@@ -1,37 +1,26 @@
 
 import {all, call, fork, select, put, take, takeEvery} from 'redux-saga/effects'
 
-import { ADD_PRODUCT} from "../constants/ActionTypes";
+import { ADD_PRODUCT, GET_PRODUCT} from "../constants/ActionTypes";
+
+import {getListProducts} from "../action/index"
 
 import {reduxSagaFirebase} from "../db";
 
-function* addProductSaga() {
-        const state = yield select(state => state)
-        console.log(state);
-    console.log('Haha')
-
-        const key = yield call(reduxSagaFirebase.database.create, 'products', {
-            done: false,
-            label: 'Do this',
-        });
-    console.log(key);
+function* addProductSaga(action) {
+    yield call(
+        reduxSagaFirebase.database.create,
+        'products', action.product
+    );
 }
 
-function* getProductSaga() {
-        yield call(reduxSagaFirebase.database.read, 'products')
-}
+function* getProductSaga(action) {
 
-function* getProductStatusWatcher() {
-    const channel = yield call(reduxSagaFirebase.database.channel, 'products')
-    while (true) {
-        const {products} = yield take(channel)
-
-        console.log(products)
-    }
 }
 
 export default function* addProductRootSaga() {
     yield all([
         takeEvery(ADD_PRODUCT, addProductSaga),
+        takeEvery(GET_PRODUCT, getProductSaga),
     ])
 }

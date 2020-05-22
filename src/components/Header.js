@@ -29,7 +29,8 @@ const Header = ({ checkOut }) => {
           visible={modalVisible}
           okText={"Check out"}
           onOk={onCheckOut}
-          onCancel={() => setModalVisible(!modalVisible)}
+          //onCancel={() => setModalVisible(!modalVisible)}
+          maskClosable={false}
         >
           <CartContainer />
         </Modal>

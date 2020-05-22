@@ -1,11 +1,14 @@
-import { ADD_TO_CART, CHECK_OUT } from "../constants/ActionTypes";
-import {types} from "../action/cart"
+import {REMOVE_FROM_CART, ADD_TO_CART, CHECK_OUT} from "../constants/ActionTypes";
 
 const cartProducts = (state = [], action) => {
   switch (action.type) {
-    case types.CHECK_OUT:
+    case CHECK_OUT:
       return [];
-    case types.ADD_TO_CART:
+    case REMOVE_FROM_CART:
+      return state.filter(product => {
+          return product.id !== action.id
+      });
+    case ADD_TO_CART:
       if (state.some(product => product["id"] === action.cartProducts.id)) {
         return state.map(product => {
           if (product["id"] === action.cartProducts.id) {

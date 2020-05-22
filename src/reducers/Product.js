@@ -1,8 +1,17 @@
-import { ADD_TO_CART, ADD_PRODUCT } from "../constants/ActionTypes";
-import data from "../api/data.json";
+import { ADD_TO_CART, ADD_PRODUCT, GET_PRODUCT} from "../constants/ActionTypes";
+import data from "../api/data.json"
 
-const products = (state = data, action) => {
+const initState = {
+  products: []
+}
+const products = (state = data, action = {}) => {
   switch (action.type) {
+    case GET_PRODUCT:
+      console.log(action)
+      return {
+        ...state,
+        products: action.products,
+      }
     case ADD_TO_CART:
       return state.map(product => {
         if (product["id"] === action.cartProducts["id"]) {
@@ -15,7 +24,7 @@ const products = (state = data, action) => {
       });
     case ADD_PRODUCT:
       if (state.some(product => product["id"] === action.product.id)) {
-        return state.map(product => {
+        return state.products.map(product => {
           if (
             product.title === action.product.title &&
             product.price === action.product.price
@@ -30,7 +39,7 @@ const products = (state = data, action) => {
       } else {
         return [
           ...state,
-          { ...action.product, id: state["length"] + 1, inventory: 1 }
+          { ...action.product, id: state["length"] + 1 }
         ];
       }
     default:

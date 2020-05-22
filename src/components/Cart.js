@@ -1,13 +1,13 @@
 import React from "react";
 import CartProduct from "./CartProduct";
 
-const Cart = ({ cartProducts }) => {
+const Cart = ({ cartProducts, removeFromCart }) => {
   const hasProducts = cartProducts?.length > 0;
   const total = hasProducts
     ? cartProducts.reduce((accum, item) => accum + item.price * item.quality, 0)
     : 0;
   const nodes = hasProducts ? (
-    <CartProduct cartProducts={cartProducts} />
+    <CartProduct cartProducts={cartProducts} removeFromCart={removeFromCart}/>
   ) : (
     <p>Cart is empty</p>
   );

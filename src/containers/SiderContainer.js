@@ -5,8 +5,9 @@ import { login, logout } from '../action/login'
 
 import UserSider from "../components/Sider";
 import {getUser, getLoggedIn} from "../reducers/Login";
+import { getListProducts } from "../action/index"
 
-const SiderContainer = ({user, login, logout, loggedIn}) => (<UserSider loggedIn={loggedIn} login={login} logout={logout} user={user}/>);
+const SiderContainer = ({user, login, logout, loggedIn, getListProducts}) => (<UserSider getListProducts={getListProducts} loggedIn={loggedIn} login={login} logout={logout} user={user}/>);
 
 const mapStateToProps = (state) => {
     return{
@@ -14,6 +15,6 @@ const mapStateToProps = (state) => {
         loggedIn: getLoggedIn(state)
     }
 }
-export default connect(mapStateToProps, { login, logout})(SiderContainer);
+export default connect(mapStateToProps, { login, logout, getListProducts})(SiderContainer);
 
 
