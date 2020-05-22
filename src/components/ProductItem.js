@@ -8,7 +8,15 @@ const imageStyle = {
     height: "auto"
 };
 
-const ProductItem = ({products, addToCart}) => {
+const ProductItem = ({products, addToCart, cart, increaseQuality}) => {
+    const onAddToCart = values => {
+        const exist = !_.some(cart, {"title:": values.title, "price": values.price});
+        if(!exist){
+            addToCart(values)
+        } else {
+            increaseQuality(values)
+        }
+    }
     return _.map(products, (item) => (
         <Col xs={24} sm={12} md={6} key={item.id}>
             <Card cover={<img style={imageStyle} alt="example" src={item.link}/>}>
@@ -19,7 +27,7 @@ const ProductItem = ({products, addToCart}) => {
                 />
                 <Button
                     disabled={item.inventory > 0 ? "" : "disabled"}
-                    onClick={() => addToCart(item)}
+                    onClick={() => onAddToCart(item)}
                 >
                     {item.inventory > 0 ? "Add to cart" : "Sold out"}
                 </Button>

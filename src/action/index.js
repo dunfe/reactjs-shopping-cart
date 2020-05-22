@@ -1,4 +1,12 @@
-import {ADD_PRODUCT, ADD_TO_CART, CHECK_OUT, GET_PRODUCT, REMOVE_FROM_CART} from "../constants/ActionTypes";
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const CHECK_OUT = "CHECK_OUT";
+export const GET_PRODUCT = "GET_PRODUCT";
+export const GET_CART = "GET_CART";
+export const INCREASE_INVENTORY = "INCREASE_INVENTORY";
+export const INCREASE_QUALITY = "INCREASE_QUALITY";
+export const SYNC_PRODUCT = "SYNC_PRODUCT";
 
 export const removeFromCart = product => ({
     type: REMOVE_FROM_CART,
@@ -10,14 +18,34 @@ export const addNewProduct = product => ({
     product: product
 });
 
+export const increaseInventory = product => ({
+    type: INCREASE_INVENTORY,
+    product: product
+});
+
+export const increaseQuality = product => ({
+    type: INCREASE_QUALITY,
+    product: product
+});
+
 export const getListProducts = (products) => ({
     type: GET_PRODUCT,
     products: products
 });
 
-export const addToCart = cartProducts => ({
+export const syncProduct = (products) => ({
+    type: SYNC_PRODUCT,
+    products: products
+});
+
+export const getListCart = (products) => ({
+    type: GET_CART,
+    products: products
+});
+
+export const addToCart = product => ({
     type: ADD_TO_CART,
-    cartProducts: cartProducts
+    product: product
 });
 
 export const checkOut = cartProducts => ({

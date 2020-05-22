@@ -2,13 +2,15 @@ import {Button, List} from "antd";
 import React from "react";
 import {connect} from "react-redux"
 import {removeFromCart} from "../action";
+import _ from "lodash"
 
 
 const CartProduct = ({cartProducts, removeFromCart}) => {
+    const arr = _.values(cartProducts)
     return (
         <List
             itemLayout="horizontal"
-            dataSource={cartProducts}
+            dataSource={arr}
             renderItem={item => (
                 <List.Item key={item.id}>
                     <List.Item.Meta

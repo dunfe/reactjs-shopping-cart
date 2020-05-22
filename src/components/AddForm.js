@@ -1,7 +1,7 @@
 import {Button, Form, Input} from "antd";
 import React, {useState} from "react";
 import {connect} from "react-redux";
-import {addNewProduct} from "../action/index";
+import {addNewProduct, increaseInventory} from "../action/index";
 import _ from "lodash"
 
 const layout = {
@@ -13,14 +13,18 @@ const tailLayout = {
     wrapperCol: {offset: 4, span: 16}
 };
 
-const Add = ({products, addNewProduct}) => {
+const Add = ({products, addNewProduct, increaseInventory}) => {
     const [title, setTitle] = useState("");
 
     const [form] = Form.useForm();
 
     const onFinish = values => {
         const id = _.size(products) + 1;
-        addNewProduct({...values, id: id});
+        if(!_.some(products, values)){
+            addNewProduct({...values, id: id});
+        } else {
+            increaseInventory(values)
+        }
         onReset();
     };
 
@@ -83,5 +87,5 @@ const Add = ({products, addNewProduct}) => {
 
 export default connect(
     null,
-    {addNewProduct}
+    {addNewProduct, increaseInventory}
 )(Add);

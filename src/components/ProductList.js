@@ -4,7 +4,7 @@ import ProductItem from "./ProductItem";
 
 const {Search} = Input;
 
-const ProductList = ({title, products = [], addToCart, cartProducts}) => {
+const ProductList = ({title, products = [], addToCart, cart, increaseQuality}) => {
     return (
         <div className="site-card-wrapper" style={{margin: 10}}>
             <Row justify="space-between">
@@ -22,7 +22,8 @@ const ProductList = ({title, products = [], addToCart, cartProducts}) => {
             </Row>
             <Row justify="space-around" gutter={[16, 16]} style={{marginTop: 20}}>
                 <ProductItem
-                    cartProducts={cartProducts}
+                    cart={cart}
+                    increaseQuality={increaseQuality}
                     products={products}
                     addToCart={addToCart}
                 />

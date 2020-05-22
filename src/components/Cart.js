@@ -5,7 +5,7 @@ import _ from "lodash"
 const Cart = ({cartProducts}) => {
     const hasProducts = _.size(cartProducts) > 0;
     const total = hasProducts
-        ? cartProducts.reduce((accum, item) => accum + item.price * item.quality, 0)
+        ? _.reduce(cartProducts, (accum, item) => accum + item.price * item.quality, 0)
         : 0;
     const nodes = hasProducts ? (
         <CartProduct cartProducts={cartProducts}/>
