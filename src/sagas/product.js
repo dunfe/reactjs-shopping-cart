@@ -11,12 +11,13 @@ function* addProductSaga(action) {
         reduxSagaFirebase.database.create,
         'products', action.product
     );
-    console.log("Added!")
+    yield fork(getProductSaga)
 }
 
 function* getProductSaga() {
     try {
         const products = yield call(reduxSagaFirebase.database.read, 'products')
+        console.log(products)
         if (products) {
             yield put(getListProducts(products))
         } else {

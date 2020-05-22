@@ -11,7 +11,4 @@ const fb = firebase.initializeApp({
   appId: "1:237760961127:web:de5211552408d772e212c2",
   measurementId: "G-NCL2E36HTQ"
 });
-
-export default fb;
-
 export const reduxSagaFirebase = new ReduxSagaFirebase(fb);

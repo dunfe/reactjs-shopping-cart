@@ -1,15 +1,16 @@
 import React from "react";
 import Add from "../components/AddForm";
-import { connect } from "react-redux";
-import { addNewProduct } from "../action";
+import {connect} from "react-redux";
+import {addNewProduct} from "../action";
+import {getProducts} from "../reducers/Product";
 
-const AddContainer = ({ products, addNewProduct }) => (
-  <Add products={products} addNewProduct={addNewProduct} />
+const AddContainer = ({products, addNewProduct}) => (
+    <Add products={products} addNewProduct={addNewProduct}/>
 );
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: getProducts(state)
   };
 };
 

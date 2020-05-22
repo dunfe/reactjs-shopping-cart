@@ -21,24 +21,8 @@ function productsReducer(state = [], action = {}) {
         })
       };
     case ADD_PRODUCT:
-      if (state.products.some(product => product["id"] === action.product.id)) {
-        return state.products.map(product => {
-          if (
-              product.title === action.product.title &&
-              product.price === action.product.price
-          ) {
-            return {
-              ...product,
-              inventory: product.inventory + 1
-            };
-          }
-          return product;
-        });
-      } else {
-        return [
-          ...state,
-          { ...action.product, id: state["length"] + 1 }
-        ];
+      return {
+        ...state
       }
     default:
       return state;

@@ -1,7 +1,8 @@
-import {Form, Input, Button} from "antd";
+import {Button, Form, Input} from "antd";
 import React, {useState} from "react";
 import {connect} from "react-redux";
 import {addNewProduct} from "../action/index";
+import _ from "lodash"
 
 const layout = {
     labelCol: {span: 4},
@@ -12,23 +13,21 @@ const tailLayout = {
     wrapperCol: {offset: 4, span: 16}
 };
 
-const Add = ({addNewProduct}) => {
+const Add = ({products, addNewProduct}) => {
     const [title, setTitle] = useState("");
 
     const [form] = Form.useForm();
 
-    // when user press submit
     const onFinish = values => {
-        addNewProduct(values);
+        const id = _.size(products) + 1;
+        addNewProduct({...values, id: id});
         onReset();
     };
 
-    // when user press reset
     const onReset = () => {
         form.resetFields();
     };
 
-    // init control
     const onFill = () => {
         form.setFieldsValue({
             title: "Apple",

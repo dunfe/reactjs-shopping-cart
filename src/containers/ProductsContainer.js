@@ -2,12 +2,12 @@ import React from "react";
 import ProductList from "../components/ProductList";
 import {connect} from "react-redux";
 import {getProducts} from "../reducers/Product";
-import {addToCart, getListProducts} from "../action";
+import {addToCart} from "../action";
 
 
-const ProductsContainer = ({title, products, addToCart, getListProducts}) => {
+const ProductsContainer = ({title, products, addToCart}) => {
     return (
-        <ProductList title={title} products={products} addToCart={addToCart} getListProducts={getListProducts}/>
+        <ProductList title={title} products={products} addToCart={addToCart}/>
     )
 }
 
@@ -19,8 +19,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    addToCart,
-    getListProducts
+    addToCart
 }
 
 export default connect(
