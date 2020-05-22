@@ -1,14 +1,17 @@
-import { List, Button } from "antd";
+import {Button, List} from "antd";
 import React from "react";
+import {connect} from "react-redux"
+import {removeFromCart} from "../action";
 
-const CartProduct = ({ cartProducts, removeFromCart }) => {
-  return (
-    <List
-      itemLayout="horizontal"
-      dataSource={cartProducts}
-      renderItem={item => (
-        <List.Item key={item.id}>
-          <List.Item.Meta
+
+const CartProduct = ({cartProducts, removeFromCart}) => {
+    return (
+        <List
+            itemLayout="horizontal"
+            dataSource={cartProducts}
+            renderItem={item => (
+                <List.Item key={item.id}>
+                    <List.Item.Meta
             title={item.title}
             description={"Price: " + item.price + " Quality: " + item.quality}
           />
@@ -19,4 +22,4 @@ const CartProduct = ({ cartProducts, removeFromCart }) => {
   );
 };
 
-export default CartProduct;
+export default connect(null, removeFromCart)(CartProduct);

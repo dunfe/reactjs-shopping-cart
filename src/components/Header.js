@@ -1,42 +1,30 @@
-import { Menu, Modal } from "antd";
-import React, { useState } from "react";
-import CartContainer from "../containers/CartContainer";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import {Menu} from "antd";
+import React, {useState} from "react";
+import {ShoppingCartOutlined} from "@ant-design/icons";
+import CartModal from "./CartModal";
 
 const cartStyle = {
-  float: "right"
+    float: "right"
 };
 
-const Header = ({ checkOut }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+const Header = () => {
+    const [modalVisible, setModalVisible] = useState(false);
+    return (
+        <div>
+            <CartModal setModalVisible={setModalVisible} modalVisible={modalVisible}/>
+            <Menu mode="horizontal" style={{minHeight: 50}}>
+                <Menu.Item
+                    key="1"
+                    icon={<ShoppingCartOutlined/>}
+                    style={cartStyle}
+                    onClick={() => setModalVisible(!modalVisible)}
+                >
+                    Your cart
+                </Menu.Item>
+            </Menu>
+        </div>
 
-  const onCheckOut = () => {
-    checkOut();
-    setModalVisible(!modalVisible);
-  };
-  return (
-    <Menu mode="horizontal" style={{ minHeight: 50 }}>
-      <Menu.Item
-        key="1"
-        icon={<ShoppingCartOutlined />}
-        style={cartStyle}
-        onClick={() => setModalVisible(!modalVisible)}
-      >
-        Your cart
-        <Modal
-          title="Your Cart"
-          style={{ top: 20 }}
-          visible={modalVisible}
-          okText={"Check out"}
-          onOk={onCheckOut}
-          //onCancel={() => setModalVisible(!modalVisible)}
-          maskClosable={false}
-        >
-          <CartContainer />
-        </Modal>
-      </Menu.Item>
-    </Menu>
-  );
+    );
 };
 
 export default Header;
