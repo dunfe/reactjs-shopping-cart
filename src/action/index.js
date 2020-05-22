@@ -1,13 +1,13 @@
-import {ADD_PRODUCT, ADD_TO_CART, CHECK_OUT, GET_PRODUCT, REMOVE_FROM_CART} from "../constants/ActionTypes";
+import {ADD_PRODUCT, ADD_TO_CART, CHECK_OUT, GET_PRODUCT} from "../constants/ActionTypes";
 
 export const addNewProduct = product => ({
     type: ADD_PRODUCT,
     product: product
 });
 
-export const getListProducts = products => ({
+export const getListProducts = (products) => ({
     type: GET_PRODUCT,
-    products
+    products: products
 });
 
 export const addToCart = cartProducts => ({
