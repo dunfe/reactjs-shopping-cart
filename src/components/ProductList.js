@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Col, Row} from "antd";
+import {Row} from "antd";
 import ProductItem from "./ProductItem";
 import CarouselComponent from "./Carousel"
 import ToolBarComponent from "./ToolBar"

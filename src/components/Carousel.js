@@ -29,7 +29,6 @@ const CarouselComponent = () => {
                 </Carousel>
             </Col>
         </Row>
-
     )
 }
 

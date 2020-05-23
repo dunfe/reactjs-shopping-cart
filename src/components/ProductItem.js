@@ -3,16 +3,13 @@ import {Tooltip, Card, Col, List} from "antd";
 import Product from "./Product";
 import _ from "lodash"
 import {DeleteOutlined, ShoppingOutlined} from '@ant-design/icons';
+import ListItemProductComponent from "./ListItemProduct";
 
 const imageStyle = {
     width: "100%",
     height: "auto",
     padding: 20
 };
-
-const iconStyle = {
-    fontSize: 30
-}
 
 const addToCartButtonStyle = {
     fontSize: 30,
@@ -57,27 +54,22 @@ const ProductItem = ({products, addToCart, user, cart, increaseQuality, layout, 
                         title={item.title}
                         price={item.price}
                         inventory={item.inventory}
-                        layout={layout}
                     />
                 </Card>
             </Col>
         ));
     } else {
-        console.log(products)
+        const data = _.values(products)
+        console.log(data);
         return (
             <Col span={24}>
                 <List
+                    size="large"
                     bordered
-                    dataSource={products}
-                    renderItem={item =>
-                        <List.Item actions={addToCartButton(item)}><Product
-                            title={item.title}
-                            layout={layout}
-                            price={item.price}
-                            inventory={item.inventory}
-                        />
-                        </List.Item>
-                    }
+                    dataSource={data}
+                    renderItem={item => <List.Item actions={addToCartButton(item)}><ListItemProductComponent title={item.title}
+                                                                             inventory={item.inventory}
+                                                                             price={item.price}/></List.Item>}
                 />
             </Col>
         )
