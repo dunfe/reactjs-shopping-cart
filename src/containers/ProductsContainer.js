@@ -2,13 +2,14 @@ import React from "react";
 import ProductList from "../components/ProductList";
 import {connect} from "react-redux";
 import {getProducts} from "../reducers/Product";
-import {addToCart, increaseQuality, removeProduct} from "../action";
-import { getCartProducts } from "../reducers/Cart";
-import { getUser} from '../reducers/Login'
+import {addToCart, increaseQuality, removeProduct} from "../action/index";
+import {getCartProducts} from "../reducers/Cart";
+import {getUser} from '../reducers/Login'
 
-const ProductsContainer = ({title, products,user, addToCart, increaseQuality, cart, removeProduct}) => {
+const ProductsContainer = ({title, products, user, addToCart, increaseQuality, cart, removeProduct}) => {
     return (
-        <ProductList cart={cart} title={title} user={user} products={products} removeProduct={removeProduct} addToCart={addToCart} increaseQuality={increaseQuality}/>
+        <ProductList cart={cart} title={title} user={user} products={products} removeProduct={removeProduct}
+                     addToCart={addToCart} increaseQuality={increaseQuality}/>
     )
 }
 

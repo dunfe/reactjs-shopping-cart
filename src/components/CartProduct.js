@@ -11,14 +11,14 @@ const CartProduct = ({cartProducts, removeFromCart}) => {
             renderItem={item => (
                 <List.Item key={item.id}>
                     <List.Item.Meta
-            title={item.title}
-            description={"Price: " + item.price + " Quality: " + item.quality}
-          />
-          <Button type="link" onClick={() => removeFromCart(item)}>Remove</Button>
-        </List.Item>
-      )}
-    />
-  );
+                        title={item.title}
+                        description={"Price: " + item.price + " Quality: " + item.quality}
+                    />
+                    <Button type="link" onClick={() => removeFromCart(item)}>Remove</Button>
+                </List.Item>
+            )}
+        />
+    );
 };
 
 export default CartProduct;

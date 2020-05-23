@@ -13,13 +13,13 @@ const Header = ({checkOut, cart}) => {
         <div>
             <CartModal cart={cart} checkOut={checkOut} setModalVisible={setModalVisible} modalVisible={modalVisible}/>
             <Menu mode="horizontal" style={{minHeight: 50}}>
-                <Menu.Item key="2" icon={<FacebookOutlined />}>
+                <Menu.Item key="2" icon={<FacebookOutlined/>}>
                     Facebook
                 </Menu.Item>
-                <Menu.Item key="3" icon={<InstagramOutlined />}>
+                <Menu.Item key="3" icon={<InstagramOutlined/>}>
                     Instagram
                 </Menu.Item>
-                <Menu.Item key="4" icon={<TwitterOutlined />}>
+                <Menu.Item key="4" icon={<TwitterOutlined/>}>
                     Twitter
                 </Menu.Item>
                 <Menu.Item

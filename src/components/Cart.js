@@ -14,11 +14,11 @@ const Cart = ({cartProducts, removeFromCart}) => {
     );
 
     return (
-    <div style={{ margin: 20 }}>
-      <div>{nodes}</div>
-      <p>Total: {total.toFixed(2)}</p>
-    </div>
-  );
+        <div style={{margin: 20}}>
+            <div>{nodes}</div>
+            <p>Total: {total.toFixed(2)}</p>
+        </div>
+    );
 };
 
 export default Cart;

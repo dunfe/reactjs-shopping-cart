@@ -20,7 +20,7 @@ const Add = ({products, addNewProduct, increaseInventory}) => {
 
     const onFinish = values => {
         const id = _.findLast(products).id + 1;
-        if(!_.some(products, {"title" : values.title, "price": values.price})){
+        if (!_.some(products, {"title": values.title, "price": values.price})) {
             addNewProduct({...values, id: id});
         } else {
             increaseInventory(values)

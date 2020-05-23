@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import ReduxSagaFirebase from "redux-saga-firebase";
 
 const fb = firebase.initializeApp({
