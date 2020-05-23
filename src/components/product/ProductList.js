@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {Row} from "antd";
 import ProductItem from "./ProductItem";
-import CarouselComponent from "./Carousel"
-import ToolBarComponent from "./ToolBar"
+import CarouselComponent from "../layout/Carousel"
+import ToolBarComponent from "../layout/ToolBar"
 
 
 const ProductList = ({title, products = [], addToCart, user, cart, increaseQuality, removeProduct}) => {

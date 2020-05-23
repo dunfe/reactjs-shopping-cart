@@ -1,7 +1,7 @@
 import {Menu} from "antd";
 import React, {useState} from "react";
 import {ShoppingCartOutlined, FacebookOutlined, InstagramOutlined, TwitterOutlined} from "@ant-design/icons";
-import CartModal from "./cart/CartModal";
+import CartModal from "../cart/CartModal";
 
 const cartStyle = {
     float: "right"

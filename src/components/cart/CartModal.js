@@ -1,6 +1,6 @@
 import React from "react"
 import {Modal} from "antd";
-import CartContainer from "../containers/CartContainer";
+import CartContainer from "../../containers/CartContainer";
 import _ from "lodash"
 
 const CartModal = ({modalVisible, setModalVisible, checkOut, cart}) => {

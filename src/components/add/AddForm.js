@@ -1,7 +1,7 @@
 import {Button, Form, Input} from "antd";
 import React, {useState} from "react";
 import {connect} from "react-redux";
-import {addNewProduct, increaseInventory} from "../action/index";
+import {addNewProduct, increaseInventory} from "../../action";
 import _ from "lodash"
 
 const layout = {
