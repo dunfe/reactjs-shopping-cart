@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { login, logout } from '../action/login'
 
-import UserSider from "../components/Sider";
+import UserSider from "../components/layout/Sider";
 import {getUser, getLoggedIn} from "../reducers/Login";
 import { getListProducts } from "../action/index"
 

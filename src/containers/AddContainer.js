@@ -1,5 +1,5 @@
 import React from "react";
-import Add from "../components/AddForm";
+import Add from "../components/add/AddForm";
 import {connect} from "react-redux";
 import {addNewProduct} from "../action";
 import {getProducts} from "../reducers/Product";
