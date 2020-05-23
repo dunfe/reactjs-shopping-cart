@@ -1,4 +1,4 @@
-import {ADD_PRODUCT, ADD_TO_CART, GET_PRODUCT, SYNC_PRODUCT} from "../action";
+import {ADD_PRODUCT, ADD_TO_CART, GET_PRODUCT, SYNC_PRODUCT, REMOVE_PRODUCT} from "../action";
 
 function productsReducer(state = [], action = {}) {
   switch (action.type) {
@@ -16,6 +16,10 @@ function productsReducer(state = [], action = {}) {
       return {
         ...state
       }
+      case REMOVE_PRODUCT:
+        return {
+          ...state
+        }
     default:
       return state;
   }

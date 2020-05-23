@@ -1,18 +1,25 @@
 import React from "react";
 import Header from "../components/Header";
 import {connect} from "react-redux";
-import {checkOut} from "../action/index";
-import CartModal from "../components/CartModal";
+import {checkOut} from "../action/index"
+import { getCartProducts } from "../reducers/Cart"
 
-const HeaderContainer = ({checkOut}) => {
+const HeaderContainer = ({checkOut, cart}) => {
     return (
         <div>
-            <Header checkOut={checkOut}/>
-            <CartModal/>
+            <Header checkOut={checkOut} cart={cart} />
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    cart: getCartProducts(state)
+})
+
+const mapDispatchToProps = {
+    checkOut
+}
 export default connect(
-    null,
-    {checkOut}
+    mapStateToProps,
+    mapDispatchToProps
 )(HeaderContainer);

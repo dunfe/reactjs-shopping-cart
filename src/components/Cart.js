@@ -2,13 +2,13 @@ import React from "react";
 import CartProduct from "./CartProduct";
 import _ from "lodash"
 
-const Cart = ({cartProducts}) => {
+const Cart = ({cartProducts, removeFromCart}) => {
     const hasProducts = _.size(cartProducts) > 0;
     const total = hasProducts
         ? _.reduce(cartProducts, (accum, item) => accum + item.price * item.quality, 0)
         : 0;
     const nodes = hasProducts ? (
-        <CartProduct cartProducts={cartProducts}/>
+        <CartProduct cartProducts={cartProducts} removeFromCart={removeFromCart}/>
     ) : (
         <p>Cart is empty</p>
     );

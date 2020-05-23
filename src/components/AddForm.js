@@ -19,8 +19,8 @@ const Add = ({products, addNewProduct, increaseInventory}) => {
     const [form] = Form.useForm();
 
     const onFinish = values => {
-        const id = _.size(products) + 1;
-        if(!_.some(products, values)){
+        const id = _.findLast(products).id + 1;
+        if(!_.some(products, {"title" : values.title, "price": values.price})){
             addNewProduct({...values, id: id});
         } else {
             increaseInventory(values)
