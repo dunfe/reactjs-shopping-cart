@@ -11,7 +11,6 @@ function* addToCartSaga(action) {
         const products = yield call(reduxSagaFirebase.database.read, 'products');
         const it = _.find(products, {"title": action.product.title, "price": action.product.price})
         const key = _.findKey(products, action.product)
-        console.log("haha")
         yield call(
             reduxSagaFirebase.database.create,
             'cart', {...action.product, quality: 1}
@@ -26,9 +25,9 @@ function* addToCartSaga(action) {
     }
 }
 
+
 function* increaseQualitySaga(action) {
     try{
-
         const cart = yield call(reduxSagaFirebase.database.read, 'cart');
         const thisCart = _.find(cart, {"title": action.product.title, "price": action.product.price})
         const thisKey = _.findKey(cart, {"title": action.product.title, "price": action.product.price})
@@ -37,15 +36,16 @@ function* increaseQualitySaga(action) {
                 reduxSagaFirebase.database.patch,
                 `cart/${thisKey}`, {quality: thisCart.quality + 1}
             );
-            const products = yield call(reduxSagaFirebase.database.read, 'products');
-            const it = _.find(products, {"title": action.product.title, "price": action.product.price})
-            const key = _.findKey(products, action.product)
+        }
+        const products = yield call(reduxSagaFirebase.database.read, 'products');
+        const it = _.find(products, {"title": action.product.title, "price": action.product.price})
+        const key = _.findKey(products, action.product)
+        if (it && key){
             yield call(
                 reduxSagaFirebase.database.patch,
                 `products/${key}`, {inventory: it.inventory - 1}
             );
         }
-
         yield fork(getCartSaga)
     } catch (e) {
         console.log(e)
@@ -54,7 +54,6 @@ function* increaseQualitySaga(action) {
 
 function* removeFromCartSaga(action) {
     try{
-
         const cart = yield call(reduxSagaFirebase.database.read, 'cart');
         const thisCart = _.find(cart, {"title": action.product.title, "price": action.product.price})
         const thisKey = _.findKey(cart, {"title": action.product.title, "price": action.product.price})

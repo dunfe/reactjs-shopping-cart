@@ -27,10 +27,7 @@ const ToolBarComponent = ({title, setGrid, data, setData}) => {
             <Col span={6} key={"2"}>
 
             </Col>
-            <Col span={6} key={"3"}>
-
-            </Col>
-            <Col span={6} key={"4"}>
+            <Col span={12} key={"4"}>
                 <Row justify="space-between">
                     <Col span={18}>
                         <Search
